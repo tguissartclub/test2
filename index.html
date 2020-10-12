@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="ja" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>金木犀の陣</title>
+
+  <script id="text/javascript">
+    window.onhashchange = function() {
+      let hash = location.hash,
+          number = hash.slice(6);
+      if (hash === "#home" || hash === "") {
+        let cs = document.getElementById('images').className;
+        document.getElementById('images').removeAttribute('class');
+        setTimeout(function () {
+          document.getElementById(cs).classList.remove("show");
+          document.getElementById(cs).classList.add("hide");
+        }, 300);
+        document.querySelector('body').classList.remove("selected");
+        document.querySelector('body').classList.add("deselected");
+        document.querySelector('#description h2').textContent = null;
+        document.querySelector('#description h1').textContent = null;
+        document.querySelector('#description p').textContent = null;
+      } else {
+        document.querySelector(hash).classList.remove("hide");
+        document.querySelector(hash).classList.add("show")
+        document.getElementById('images').classList.add(hash.substr(1));
+        document.querySelector('body').classList.add("selected");
+        document.querySelector('body').classList.remove("deselected");
+        setTimeout(function () {
+          document.querySelector('body').classList.add("description");
+        }, 500);
+        document.querySelector('#description h2').textContent = resultdata[number][1] + "　" + resultdata[number][0];
+        document.querySelector('#description h1').textContent = resultdata[number][2];
+        document.querySelector('#description p').textContent = resultdata[number][3];
+      }
+    };
+
+    function description() {
+      if (document.querySelector('body').className.includes("description")) {
+        document.querySelector('body').classList.remove("description");
+      }else {
+        document.querySelector('body').classList.add("description");
+      }
+    }
+
+    function loadimage(number, number2) {
+      document.getElementById('image' + number).setAttribute("src", "images/" + number + ".jpg");
+      location.href = "#image"+number;
+      document.getElementById("thumbnails").children[number2 - 1].setAttribute("onclick","location.href = '#image"+number+"';");
+      document.getElementById('image' + number).setAttribute("onload", "aspectratio(" + number + ")");
+    }
+
+    function aspectratio(number) {
+      console.log(number);
+      let asre = document.getElementById('image' + number).naturalHeight / document.getElementById('image' + number).naturalWidth,
+        asre2;
+      console.log(asre);
+      if (asre == 1) {
+        asre2 = "square"
+      } else if (asre > 1) {
+        asre2 = "portrait";
+      } else {
+        asre2 = "landscape";
+      }
+      document.getElementById('image' + number).removeAttribute("onload");
+      document.getElementById('image' + number).classList.add(asre2);
+    }
+  </script>
+  <link rel="stylesheet" href="index.css">
+</head>
+
+<body onscroll="scroll()" class="deselected">
+  <section id="one">
+  </section>
+  <section id="two">
+  </section>
+  <section id="three">
+    <div id="thumbnails">
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </section>
+  <section id="four">
+    © 2020 TGUISS Art Club
+  </section>
+  <div id="intro">
+
+  </div>
+  <div id="image">
+    <div id="images">
+    <img id="image1" class="hide">
+    <img id="image2" class="hide">
+    <img id="image3" class="hide">
+    <img id="image4" class="hide">
+    <img id="image5" class="hide">
+    <img id="image6" class="hide">
+    <img id="image7" class="hide">
+    <img id="image8" class="hide">
+    <img id="image9" class="hide">
+    <img id="image10" class="hide">
+    <img id="image11" class="hide">
+    <img id="image12" class="hide">
+    <img id="image13" class="hide">
+    <img id="image14" class="hide">
+    <img id="image15" class="hide">
+    <img id="image16" class="hide">
+    <img id="image17" class="hide">
+    <img id="image18" class="hide">
+    <img id="image19" class="hide">
+    <img id="image20" class="hide">
+    <img id="image21" class="hide">
+    <img id="image22" class="hide">
+    <img id="image23" class="hide">
+    <img id="image24" class="hide">
+    <img id="image25" class="hide">
+    <img id="image26" class="hide">
+    <img id="image27" class="hide">
+  </div>
+  <div id="description">
+    <h2>５年　苗字名前</h2>
+    <h1>作品名</h1>
+    <p>作品説明　親譲りの無鉄砲で小供の時から損ばかりしている。小学校に居る時分学校の二階から飛び降りて一週間ほど腰を抜かした事がある。なぜそんな無闇をしたと聞く人があるかも知れぬ。別段深い理由でもない。</p>
+  </div>
+  <a href="#home" id="close"></a>
+  <div id="descri" onclick="description()">
+  </div>
+  </div>
+  <script src="index2.js" charset="utf-8"></script>
+</body>
+
+</html>
