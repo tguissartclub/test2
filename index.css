@@ -10,9 +10,10 @@
 }
 
 body {
-    font-family: Koruri;
+        font-family:
+        'M+ C Type-2 (basic latin) Regular',
+        'M+ Type-2 (general-j) Regular', sans-serif;
 }
-
 * {
   padding: 0;
   margin: 0;
