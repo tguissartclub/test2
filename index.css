@@ -1,13 +1,12 @@
-
+* {
+  padding: 0;
+  margin: 0;
+}
 
 body {
         font-family:
         'M+ C Type-2 (basic latin) Regular',
         'M+ Type-2 (general-j) Regular', sans-serif;
-}
-* {
-  padding: 0;
-  margin: 0;
 }
 
 .loading, .loaded:not(.three), .three:not(.loaded) {
@@ -126,7 +125,6 @@ section {
   width: 10vmin;
   height: 10vmin;
   position: fixed;
-  background: black;
   top: 0;
   z-index: 3;
 }
@@ -139,10 +137,29 @@ input[type="checkbox"] {
   width: 10vmin;
   height: 10vmin;
   position: fixed;
-  background: grey;
   top: 10vmin;
 }
 
+#descriptionmenu path {
+  transform: none;
+  transition: .3s;
+}
+
+.description #descriptionmenu #path1 {
+  transform:  translateX(100%) translateY(100%) rotate(180deg);
+}
+
+.description #descriptionmenu #path2 {
+  transform: translateX(23%);
+}
+
+.description #descriptionmenu #path3 {
+  transform: translateX(38%);
+}
+
+.description #descriptionmenu #path4 {
+  transform: translateX(23%);
+}
 
 #description {
   right: 0;
@@ -284,6 +301,40 @@ body::-webkit-scrollbar {
 }
 
 .three.second #arrow, .three.third #arrow, .three.fourth #arrow {
+  transition: opacity .3s ease-in, transform .3s ease-in, visibility 0s .3s;
+  transform: translateY(-50%);
+  opacity: 0;
+  visibility: hidden;
+}
+
+#intro {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  width:
+  margin: auto;
+}
+
+#intro > p > iro {
+  color: #fe7e15;
+}
+
+.three.first #intro {
+  transition: opacity .3s ease-in, transform .3s ease-in, visibility 0s .3s;
+  transform: translateY(50%);
+  opacity: 0;
+  visibility: hidden;
+}
+
+.three.second #intro {
+  transition: opacity .3s .2s ease-out, transform .3s .2s ease-out;
+  transform: translateY(0);
+  opacity: 1;
+  visibility: visible;
+}
+
+.three.third #intro, .three.fourth #intro {
   transition: opacity .3s ease-in, transform .3s ease-in, visibility 0s .3s;
   transform: translateY(-50%);
   opacity: 0;
