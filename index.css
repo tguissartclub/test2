@@ -1,7 +1,11 @@
 * {
   padding: 0;
   margin: 0;
+	outline: none;
+  border: 0;
+  font-size: 1em;
 }
+
 
 body {
         font-family:
@@ -9,8 +13,8 @@ body {
         'M+ Type-2 (general-j) Regular', sans-serif;
 }
 
-.loading, .loaded:not(.three), .three:not(.loaded) {
-  visibility: hidden;;
+.loading, .loaded:not(.three), .three:not(.loaded), #intro, #three {
+  visibility: hidden;
 }
 
 .loaded.three {
@@ -36,6 +40,7 @@ section {
 #three {
   min-height: 100vh;
   transition: filter .3s ease-in;
+  padding-top: 20vh;
 }
 
 #thumbnails{
@@ -52,7 +57,7 @@ section {
   opacity: 1;
   transition: box-shadow .3s, opacity .3s;
   background-repeat: no-repeat;
-  background-size: 100%;
+  background-size: 101%;
   background-position: center;
 }
 
@@ -70,6 +75,7 @@ section {
 
 #four {
   height: 10vh;
+
 }
 
 .selected #three{
@@ -88,7 +94,7 @@ section {
   background: rgba(255, 245, 240,.75);
   top: 0;
   left: 0;
-  z-index: 2;
+  z-index: 100;
 }
 
 #images img{
@@ -126,7 +132,7 @@ section {
   height: 10vmin;
   position: fixed;
   top: 0;
-  z-index: 3;
+  z-index: 101;
 }
 
 input[type="checkbox"] {
@@ -142,23 +148,110 @@ input[type="checkbox"] {
 
 #descriptionmenu path {
   transform: none;
-  transition: .3s;
 }
 
-.description #descriptionmenu #path1 {
-  transform:  translateX(100%) translateY(100%) rotate(180deg);
+@media all and (orientation: landscape) {
+  .landscapemenu {
+    visibility: visible;
+  }
+
+  .portraitmenu {
+    visibility: hidden;
+  }
+
+  #descriptionmenu path:not(#path1).landscapemenu{
+    transition: transform .3s;
+  }
+
+  #descriptionmenu #path1 {
+    transition: transform 0s .15s;
+    animation: description2 .3s;
+  }
+
+  .description #descriptionmenu #path1 {
+    transform:  translateX(100%) translateY(100%) rotate(-180deg);
+    animation: description .3s;
+    transition: transform 0s .15s;
+  }
+
+  .description #descriptionmenu #path2 {
+    transform: translateX(23%);
+  }
+
+  .description #descriptionmenu #path3 {
+    transform: translateX(35%);
+  }
+
+  .description #descriptionmenu #path4 {
+    transform: translateX(23%);
+  }
 }
 
-.description #descriptionmenu #path2 {
-  transform: translateX(23%);
+@media all and (orientation: portrait) {
+  .landscapemenu {
+    visibility: hidden;
+  }
+
+  .portraitmenu {
+    visibility: visible;
+  }
+
+  #descriptionmenu #path12 {
+    transition: transform 0s .15s;
+    animation: description2 .3s;
+  }
+
+  .description #descriptionmenu #path12 {
+    transform:  translateX(100%) translateY(100%) rotate(-180deg);
+    animation: description .3s;
+    transition: transform 0s .15s;
+  }
+
+  #descriptionmenu path:not(#path12).portraitmenu {
+    transition: transform .3s;
+  }
+
+  .description #descriptionmenu #path14, #descriptionmenu #path18, .description #descriptionmenu #path13, #descriptionmenu #path17 {
+    transform: none;
+  }
+
+  .description #descriptionmenu #path18, #descriptionmenu #path14 {
+    transform: translateX(-16.1%);
+  }
+
+  .description #descriptionmenu #path17, #descriptionmenu #path13 {
+    transform: translateX(16.1%);
+  }
 }
 
-.description #descriptionmenu #path3 {
-  transform: translateX(38%);
+@keyframes description {
+  0% {
+    opacity: 1;
+  }
+  33% {
+    opacity: 0;
+  }
+  66% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
-.description #descriptionmenu #path4 {
-  transform: translateX(23%);
+@keyframes description2 {
+  0% {
+    opacity: 1;
+  }
+  33% {
+    opacity: 0;
+  }
+  66% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 #description {
@@ -219,13 +312,24 @@ input[type="checkbox"] {
 }
 
 body::-webkit-scrollbar {
-  width: 0;
+  display: none;
+}
+
+
+#first {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 100vh;
+  background: white;
+  z-index: 100;
 }
 
 #logo {
   position: fixed;
-  opacity: 1;
-  transform: translateY(0);
   top: 0;
   bottom: 0;
   left: 0;
@@ -234,18 +338,15 @@ body::-webkit-scrollbar {
   max-width: 100vw;
 }
 
-.three.first #logo {
-  transition: opacity .3s .2s ease-out, transform .3s .2s ease-out;
+
+.three.first #first {
+  transition: transform .3s ease-out;
   transform: translateY(0);
-  opacity: 1;
-  visibility: visible;
 }
 
-.three.second #logo, .three.third #logo {
-  transition: opacity .3s ease-in, transform .3s ease-in, visibility 0s .3s;
-  transform: translateY(-50%);
-  opacity: 0;
-  visibility: hidden;
+.three.second #first, .three.third #first {
+  transition: transform .3s ease-in;
+  transform: translateY(-100%);
 }
 
 #loading {
@@ -279,9 +380,6 @@ body::-webkit-scrollbar {
   right: 0;
   margin: auto;
   visibility: hidden;
-  fill:none;
-  stroke:#000000;
-  stroke-width:2.5;
 }
 
 .three.loaded.first #arrow:hover {
@@ -289,22 +387,8 @@ body::-webkit-scrollbar {
 }
 
 .three.loaded #arrow {
-  animation: intro1 1s;
+  animation: intro1 1s forwards;
   visibility: visible;
-}
-
-.three.first #arrow {
-  transition: opacity .3s .2s ease-out, transform .3s .2s ease-out;
-  transform: translateY(0);
-  opacity: 1;
-  visibility: visible;
-}
-
-.three.second #arrow, .three.third #arrow, .three.fourth #arrow {
-  transition: opacity .3s ease-in, transform .3s ease-in, visibility 0s .3s;
-  transform: translateY(-50%);
-  opacity: 0;
-  visibility: hidden;
 }
 
 #intro {
@@ -312,7 +396,7 @@ body::-webkit-scrollbar {
   top: 0;
   left: 0;
   right: 0;
-  width:
+
   margin: auto;
 }
 
@@ -320,14 +404,7 @@ body::-webkit-scrollbar {
   color: #fe7e15;
 }
 
-.three.first #intro {
-  transition: opacity .3s ease-in, transform .3s ease-in, visibility 0s .3s;
-  transform: translateY(50%);
-  opacity: 0;
-  visibility: hidden;
-}
-
-.three.second #intro {
+.three.first #intro, .three.second #intro {
   transition: opacity .3s .2s ease-out, transform .3s .2s ease-out;
   transform: translateY(0);
   opacity: 1;
@@ -432,4 +509,27 @@ body::-webkit-scrollbar {
 
 .description #description p {
   transition-delay: .6s
+}
+
+.three.first #three, .three.second #three {
+  transition: opacity .3s ease-in, transform .3s .2s ease-in, visibility 0s .3s;
+  transform: translateY(10vh);
+  opacity: 0;
+  visibility: hidden;
+}
+
+ .three.third #three {
+  transition: opacity .3s .2s ease-out, transform .3s ease-out;
+  transform: translateY(0%);
+  opacity: 1;
+  visibility: visible;
+}
+
+#closemenu, #descriptionmenu {
+  fill:black;
+  transition: fill .3s;
+}
+
+#close:hover #closemenu, #descri:hover #descriptionmenu {
+  fill:#fcb619;
 }
