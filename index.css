@@ -530,11 +530,11 @@ body::-webkit-scrollbar {
   visibility: visible;
 }
 
-#closemenu, #descriptionmenu {
+#closemenu, #descriptionmenu, #arrow {
   fill:black;
   transition: fill .3s;
 }
 
-#close:hover #closemenu, #descri:hover #descriptionmenu {
+#close:hover #closemenu, #descri:hover #descriptionmenu, #arrow:hover {
   fill:#fcb619;
 }
