@@ -102,7 +102,7 @@ section {
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%;
+  height: 80vh;
   object-fit: contain;
 }
 
@@ -126,12 +126,12 @@ section {
   visibility: visible;
 }
 
-
 #close {
-  width: 10vmin;
-  height: 10vmin;
+  width: 10vh;
+  height: 10vh;
   position: fixed;
   top: 0;
+  right: 0;
   z-index: 101;
 }
 
@@ -140,10 +140,12 @@ input[type="checkbox"] {
 }
 
 #descri {
-  width: 10vmin;
-  height: 10vmin;
+  width: 10vh;
+  height: 10vh;
   position: fixed;
-  top: 10vmin;
+  right: 10vh;
+  top: 0;
+  z-index: 101;
 }
 
 #descriptionmenu path {
@@ -169,7 +171,7 @@ input[type="checkbox"] {
   }
 
   .description #descriptionmenu #path1 {
-    transform:  translateX(100%) translateY(100%) rotate(-180deg);
+    transform:  translateX(100%) translateY(100%) rotate(180deg);
     animation: description .3s;
     transition: transform 0s .15s;
   }
@@ -202,7 +204,7 @@ input[type="checkbox"] {
   }
 
   .description #descriptionmenu #path12 {
-    transform:  translateX(100%) translateY(100%) rotate(-180deg);
+    transform:  translateX(100%) translateY(100%) rotate(180deg);
     animation: description .3s;
     transition: transform 0s .15s;
   }
@@ -265,11 +267,13 @@ input[type="checkbox"] {
   .description #images img,
   #description,
   .description #description{
-    transition: width .3s ease-in-out;
+    transition: width .3s ease-in-out, top .3s ease-in-out;
   }
 
   #images img, #description{
+    top: 10vh;
     transition-delay: .3s;
+    bottom: 10vh;
   }
 
   .description #images img{
@@ -318,14 +322,15 @@ body::-webkit-scrollbar {
 
 #first {
   position: fixed;
+  visibility: visible;
   top: 0;
   bottom: 0;
   left: 0;
   right: 0;
   width: 100%;
   height: 100vh;
-  background: white;
   z-index: 100;
+  background: white;
 }
 
 #logo {
