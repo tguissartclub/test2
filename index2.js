@@ -32,7 +32,7 @@ for (let i = 0; i < a.length; i++) {
     document.getElementById("thumbnails").children[i].style.backgroundImage = "url(thumbnail/"+a[i]+".jpg)";
     document.getElementById("thumbnails").children[i].setAttribute("onclick","loadimage("+a[i]+","+(i+1)+")");
 var aa = a[i];
-console.log(resultdata[aa]);
+console.log(resultdata[a[i]]);
 
 }
 
