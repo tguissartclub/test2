@@ -48,6 +48,8 @@
         setTimeout(function() {
           document.getElementById(cs).classList.remove("show");
           document.getElementById(cs).classList.add("hide");
+          document.getElementById('kyodo'+number).classList.remove("show");
+          document.getElementById('kyodo'+number).classList.add("hide")
         }, 300);
         document.querySelector('body').classList.remove("selected");
         document.querySelector('body').classList.add("deselected");
@@ -63,6 +65,8 @@
       } else {
         document.querySelector(hash).classList.remove("hide");
         document.querySelector(hash).classList.add("show")
+        document.getElementById('kyodo'+number).classList.remove("hide");
+        document.getElementById('kyodo'+number).classList.add("show")
         document.getElementById('images').classList.add(hash.substr(1));
         document.querySelector('body').classList.add("selected");
         document.querySelector('body').classList.remove("deselected");
@@ -88,6 +92,7 @@
       location.href = "#image" + number;
       document.getElementById('thumbnails').children[number2 - 1].setAttribute("onclick", "location.href = '#image" + number + "';");
       document.getElementById('image' + number).setAttribute("onload", "aspectratio(" + number + ")");
+      document.getElementById('kyodo'+number).setAttribute("style","background-image: url('kyodo/"+number+".jpg');");
     }
 
     function aspectratio(number) {
@@ -412,7 +417,7 @@
 </div>
   <div id="image">
     <div id="images">
-      <img id="image1" class="hide">
+      <img id="image1" class="hide"><span id="kyodo1" style="background-image: url('kyodo/9.jpg');" class="hide"></span>
       <img id="image2" class="hide">
       <img id="image3" class="hide">
       <img id="image4" class="hide">
