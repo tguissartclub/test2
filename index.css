@@ -169,85 +169,7 @@ input[type="checkbox"] {
   transform: none;
 }
 
-@media all and (orientation: landscape) {
-  html {
-    font-size: 16px;
-  }
-  .landscapemenu {
-    visibility: visible;
-  }
 
-  .portraitmenu {
-    visibility: hidden;
-  }
-
-  #descriptionmenu path:not(#path1).landscapemenu{
-    transition: transform .3s;
-  }
-
-  #descriptionmenu #path1 {
-    transition: transform 0s .15s;
-    animation: description2 .3s;
-  }
-
-  .description #descriptionmenu #path1 {
-    transform:  translateX(100%) translateY(100%) rotate(180deg);
-    animation: description .3s;
-    transition: transform 0s .15s;
-  }
-
-  .description #descriptionmenu #path2 {
-    transform: translateX(23%);
-  }
-
-  .description #descriptionmenu #path3 {
-    transform: translateX(35%);
-  }
-
-  .description #descriptionmenu #path4 {
-    transform: translateX(23%);
-  }
-}
-
-@media all and (orientation: portrait) {
-  html {
-    font-size: 1.5vh;
-  }
-  .landscapemenu {
-    visibility: hidden;
-  }
-
-  .portraitmenu {
-    visibility: visible;
-  }
-
-  #descriptionmenu #path12 {
-    transition: transform 0s .15s;
-    animation: description2 .3s;
-  }
-
-  .description #descriptionmenu #path12 {
-    transform:  translateX(100%) translateY(100%) rotate(180deg);
-    animation: description .3s;
-    transition: transform 0s .15s;
-  }
-
-  #descriptionmenu path:not(#path12).portraitmenu {
-    transition: transform .3s;
-  }
-
-  .description #descriptionmenu #path14, #descriptionmenu #path18, .description #descriptionmenu #path13, #descriptionmenu #path17 {
-    transform: none;
-  }
-
-  .description #descriptionmenu #path18, #descriptionmenu #path14 {
-    transform: translateX(-16.1%);
-  }
-
-  .description #descriptionmenu #path17, #descriptionmenu #path13 {
-    transform: translateX(16.1%);
-  }
-}
 
 @keyframes description {
   0% {
@@ -280,67 +202,10 @@ input[type="checkbox"] {
 }
 
 #description {
-  right: 0;
-  bottom: 0;
   position: absolute;
 }
 
-@media all and (orientation: landscape) {
-  #images img,
-  .description #images img,
-  #description,
-  .description #description{
-    transition: width .3s;
-  }
 
-  #images img, #description{
-    top: 10vh;
-    transition-delay: .3s;
-    bottom: 10vh;
-  }
-
-  .description #images img{
-    width: 60%;
-  }
-
-  #description{
-    height: 100%;
-    width: 0%;
-  }
-
-  .description #description{
-    width: 40%;
-  }
-}
-@media all and (orientation: portrait) {
-  #images img,
-  .description #images img,
-  #description,
-  .description #description{
-    transition: height .3s;
-  }
-
-  #images img {
-    top: 10vh;
-  }
-
-  #images img, #description{
-    transition-delay: .3s;
-  }
-
-  .description #images img{
-    height: 57.5vh;
-  }
-
-  #description {
-    width: 100%;
-    height: 0%;
-  }
-
-  .description #description{
-    height: 32.5vh;
-  }
-}
 
 body::-webkit-scrollbar {
   display: none;
@@ -521,134 +386,14 @@ body::-webkit-scrollbar {
   transition-delay: .6s;
 }
 
-@media all and (orientation: landscape) {
 
-  .three.second #kyodo {
-    transition: opacity .8s .7s, filter .5s, width .4s .1s, background-size 0s .4s, background-position 0s .4s;
-    opacity: 1;
-  }
-
-  .three.first #kyodo, .three.third #kyodo {
-    transition: opacity .3s, width .3s;
-    opacity: 0;
-    width: 0;
-  }
-
-  .kyodo #kyodo {
-    transition: width .3s .1s !important;
-    width: 100%;
-    cursor: default;
-
-    filter: brightness(1);
-    animation: backgroundd 0s .4s forwards;
-  }
-
-  #intro {
-    width: 42.5%;
-    top: 20vh;
-    height: 60%;
-    left: 5vw;
-  }
-  #kyodo {
-    width: 47.5vw;
-    height: 100%;
-    right: 0;
-  }
-  #logo {
-    height: 40vh;
-  }
-  #loading {
-    height: 3.5vh;
-    top: 50vh;
-  }
-  #arrow {
-    height: 12.5vh;
-    top: 70vh;
-    width: 12.5vh;
-  }
-  h3.kyodo::after {
-    width: 0;
-    height: 100%;
-    transition: width .3s;
-    right: 0;
-    left: auto;
-    border-bottom: 1px black solid;
-  }
-
-  h3.kyodo:hover::after {
-    width: 100%;
-    left: 0;
-    right: auto;
-  }
-}
 
 @keyframes backgroundd {
   to {
     background-size: contain;
   }
 }
-@media all and (orientation: portrait) {
 
-  .three.second #kyodo {
-    transition: opacity .8s .7s, filter .5s, height .4s .1s;
-    opacity: 1;
-  }
-
-  .three.first #kyodo, .three.third #kyodo {
-    transition: opacity .3s, height .3s;
-    opacity: 0;
-    height: 0;
-  }
-
-  .kyodo #kyodo {
-    transition: height .3s .1s !important;
-    height: 100vh;
-    cursor: default;
-
-    filter: brightness(1);
-    background-size: contain;
-    background-position: center !important;
-  }
-
-  #kyodo {
-    width: 100%;
-    height: 50vh;
-    bottom: 0;
-  }
-  #intro {
-    width: 85%;
-    height: 35vh;
-    left: 7.5vw;
-    top: 10vh;
-  }
-  #logo {
-    width: 90vw;
-  }
-  #loading {
-    width: 15vw;
-    top: 45vh;
-  }
-  #arrow {
-    width: 15vw;
-    top: 65vh;
-    height: 15vw;
-    max-height: 20vh;
-  }
-  h3.kyodo::after {
-    left: 0;
-    width: 100%;
-    height: 0;
-    transition: height .3s;
-    bottom: 0;
-    top: auto;
-    border-left: 1px black solid;
-  }
-  h3.kyodo:hover::after {
-    height: 100%;
-    top: 0;
-    bottom: auto;
-  }
-}
 
 
 
@@ -851,10 +596,6 @@ h3.kojin:hover::after {
   transition: opacity .3s;
 }
 
-#description {
-  overflow-y: auto;
-}
-
 #description h2 {
   margin: 1rem;
  font-size: 1.3em;
@@ -933,4 +674,288 @@ h3.kojin:hover::after {
   width: 6.363961030678928vmax;
   height: 6.363961030678928vmax;
   position: relative;
+}
+#images span {
+visibility: hidden;
+position: fixed;
+background-size: contain;
+background-position: center;
+background-repeat: no-repeat;
+opacity: 0;
+transition: opacity .3s, visibility 0s .3s;
+}
+
+.description #images span {
+  opacity: 1;
+  transition: opacity .3s .7s;
+  visibility: visible;
+}
+
+@media all and (orientation: landscape) {
+  #images img,
+  .description #images img,
+  #description,
+  .description #description{
+    transition: width .3s;
+  }
+
+  #images img, #description{
+    top: 10vh;
+    transition-delay: .3s;
+  }
+
+  .description #images img{
+    width: 60%;
+  }
+
+  #description{
+    height: 40vh;
+    width: 0%;
+    right: 0;
+  }
+
+  #images span {
+    height: 48vh;
+    bottom: 0;
+    width: 38%;
+    right: 0;
+    margin: 2vh  2%;
+  }
+
+
+  .description #description{
+    width: 40%;
+  }
+
+  html {
+    font-size: 16px;
+  }
+  .landscapemenu {
+    visibility: visible;
+  }
+
+  .portraitmenu {
+    visibility: hidden;
+  }
+
+  #descriptionmenu path:not(#path1).landscapemenu{
+    transition: transform .3s;
+  }
+
+  #descriptionmenu #path1 {
+    transition: transform 0s .15s;
+    animation: description2 .3s;
+  }
+
+  .description #descriptionmenu #path1 {
+    transform:  translateX(100%) translateY(100%) rotate(180deg);
+    animation: description .3s;
+    transition: transform 0s .15s;
+  }
+
+  .description #descriptionmenu #path2, .description #descriptionmenu #path4 {
+    transform: translateX(23%);
+  }
+
+  .description #descriptionmenu #path3 {
+    transform: translateX(35%);
+  }
+
+
+  .three.second #kyodo {
+    transition: opacity .8s .7s, filter .5s, width .4s .1s, background-size 0s .4s, background-position 0s .4s;
+    opacity: 1;
+  }
+
+  .three.first #kyodo, .three.third #kyodo {
+    transition: opacity .3s, width .3s;
+    opacity: 0;
+    width: 0;
+  }
+
+  .kyodo #kyodo {
+    transition: width .3s .1s !important;
+    width: 100%;
+    cursor: default;
+
+    filter: brightness(1);
+    animation: backgroundd 0s .4s forwards;
+  }
+
+  #intro {
+    width: 42.5%;
+    top: 20vh;
+    height: 60%;
+    left: 5vw;
+  }
+  #kyodo {
+    width: 47.5vw;
+    height: 100%;
+    right: 0;
+  }
+  #logo {
+    height: 40vh;
+  }
+  #loading {
+    height: 3.5vh;
+    top: 50vh;
+  }
+  #arrow {
+    height: 12.5vh;
+    top: 70vh;
+    width: 12.5vh;
+  }
+  h3.kyodo::after {
+    width: 0;
+    height: 100%;
+    transition: width .3s;
+    right: 0;
+    left: auto;
+    border-bottom: 1px black solid;
+  }
+
+  h3.kyodo:hover::after {
+    width: 100%;
+    left: 0;
+    right: auto;
+  }
+}
+
+
+@media all and (orientation: portrait) {
+  #images img,
+  .description #images img,
+  #description,
+  .description #description{
+    transition: height .3s;
+  }
+
+  #images img {
+    top: 10vh;
+  }
+
+  #images img, #description{
+    transition-delay: .3s;
+  }
+
+  .description #images img{
+    height: 57.5vh;
+  }
+
+  #images span {
+    height: 29.5vh;
+    bottom: 0;
+    width: 37%;
+    right: 0;
+    margin: 1.5vh  1.5%;
+  }
+
+  #description {
+    width: 60%;
+    height: 0%;
+    bottom: 0;
+    left: 0;
+  }
+
+  .description #description{
+    height: 32.5vh;
+  }
+
+  html {
+    font-size: 1.5vh;
+  }
+  .landscapemenu {
+    visibility: hidden;
+  }
+
+  .portraitmenu {
+    visibility: visible;
+  }
+
+  #descriptionmenu #path12 {
+    transition: transform 0s .15s;
+    animation: description2 .3s;
+  }
+
+  .description #descriptionmenu #path12 {
+    transform:  translateX(100%) translateY(100%) rotate(180deg);
+    animation: description .3s;
+    transition: transform 0s .15s;
+  }
+
+  #descriptionmenu path:not(#path12).portraitmenu {
+    transition: transform .3s;
+  }
+
+  .description #descriptionmenu #path14, #descriptionmenu #path18, .description #descriptionmenu #path13, #descriptionmenu #path17 {
+    transform: none;
+  }
+
+  .description #descriptionmenu #path18, #descriptionmenu #path14 {
+    transform: translateX(-16.1%);
+  }
+
+  .description #descriptionmenu #path17, #descriptionmenu #path13 {
+    transform: translateX(16.1%);
+  }
+
+  .three.second #kyodo {
+    transition: opacity .8s .7s, filter .5s, height .4s .1s;
+    opacity: 1;
+  }
+
+  .three.first #kyodo, .three.third #kyodo {
+    transition: opacity .3s, height .3s;
+    opacity: 0;
+    height: 0;
+  }
+
+  .kyodo #kyodo {
+    transition: height .3s .1s !important;
+    height: 100vh;
+    cursor: default;
+
+    filter: brightness(1);
+    background-size: contain;
+    background-position: center !important;
+  }
+
+  #kyodo {
+    width: 100%;
+    height: 50vh;
+    bottom: 0;
+  }
+  #intro {
+    width: 85%;
+    height: 35vh;
+    left: 7.5vw;
+    top: 10vh;
+  }
+  #logo {
+    width: 90vw;
+  }
+  #loading {
+    width: 15vw;
+    top: 45vh;
+  }
+  #arrow {
+    width: 15vw;
+    top: 65vh;
+    height: 15vw;
+    max-height: 20vh;
+  }
+  h3.kyodo::after {
+    left: 0;
+    width: 100%;
+    height: 0;
+    transition: height .3s;
+    bottom: 0;
+    top: auto;
+    border-left: 1px black solid;
+  }
+  h3.kyodo:hover::after {
+    height: 100%;
+    top: 0;
+    bottom: auto;
+  }
 }
