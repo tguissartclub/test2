@@ -48,7 +48,7 @@
         setTimeout(function() {
           document.getElementById(cs).classList.remove("show");
           document.getElementById(cs).classList.add("hide");
-        if (document.getElementById('kyodo'+number)) {
+        if (document.getElementById('kyodo'+cs.slice(5))) {
           document.getElementById('kyodo'+number).classList.remove("show");
           document.getElementById('kyodo'+number).classList.add("hide")
         }
