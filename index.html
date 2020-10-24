@@ -3,6 +3,8 @@
 
 <head>
   <meta charset="utf-8">
+  <meta name=”robots” content=”nofollow”>
+  <link rel="shortcut icon" href="petal.ico" type="image/vnd.microsoft.icon">
   <title>金木犀の陣</title>
   <link rel="stylesheet" type="text/css" href="https://mplus-fonts.osdn.jp/webfonts/basic_latin/mplus_webfonts.css">
   <link rel="stylesheet" type="text/css" href="https://mplus-fonts.osdn.jp/webfonts/general-j/mplus_webfonts.css">
@@ -12,18 +14,19 @@
       setTimeout(function () {
       document.querySelector('body').classList.add('three');
       document.querySelector('body').classList.add('first');
-    }, 1000);
-      window.scrollTo(0, 0);
-      if (window.screen.height / window.screen.width < 0.767) {
+      let ratio = window.innerHeight / window.innerWidth;
+      if (ratio < 0.767) {
         document.getElementById('thumbnails').setAttribute("class", "quad");
       }else{
         document.getElementById('thumbnails').setAttribute("class", "triple");
       }
-      if (window.screen.height / window.screen.width < 1) {
+      if (ratio < 1) {
         document.querySelector('h3.kyodo').textContent = "共同作品を見る→";
       }else {
         document.querySelector('h3.kyodo').textContent = "↓共同作品を見る";
       }
+    }, 1000);
+      window.scrollTo(0, 0);
     }, 6000);
 
     function loaded() {
@@ -409,7 +412,7 @@
 </div>
   <div id="image">
     <div id="images">
-      <img id="image1" class="hide" alt="loading">
+      <img id="image1" class="hide">
       <img id="image2" class="hide">
       <img id="image3" class="hide">
       <img id="image4" class="hide">
@@ -442,6 +445,9 @@
       <img id="image31" class="hide">
       <img id="image32" class="hide">
       <img id="image33" class="hide">
+    </div>
+    <div id="kyodoimages">
+
     </div>
     <div id="description">
       <h2>５年　苗字名前</h2>
