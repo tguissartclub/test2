@@ -27,9 +27,15 @@ for (i = a.length - 1; i > 0; i--) {
   a[i] = a[j];
   a[j] = x;
 }
+var element = document.getElementById('kyodoimages');
 for (let i = 0; i < a.length; i++) {
-    document.getElementsByTagName("span")[i].style.backgroundImage = "url(thumbnail/"+a[i]+".jpg)";
+    document.getElementById("thumbnails").children[i].style.backgroundImage = "url(thumbnail/"+a[i]+".jpg)";
     document.getElementById("thumbnails").children[i].setAttribute("onclick","loadimage("+a[i]+","+(i+1)+")");
+    if (!resultdata[a[i]][4]) {
+      var span = document.createElement("span");
+      span.id = "kyodo"+parseInt(i+1);
+      element.appendChild(span);
+    }
 }
 
 function scroll(){
