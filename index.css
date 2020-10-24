@@ -675,7 +675,7 @@ h3.kojin:hover::after {
   height: 6.363961030678928vmax;
   position: relative;
 }
-#images span {
+#kyodoimages span {
 visibility: hidden;
 position: fixed;
 background-size: contain;
@@ -685,7 +685,7 @@ opacity: 0;
 transition: opacity .3s, visibility 0s .3s;
 }
 
-.description #images span {
+.description #kyodoimages span {
   opacity: 1;
   transition: opacity .3s .7s;
   visibility: visible;
@@ -714,7 +714,7 @@ transition: opacity .3s, visibility 0s .3s;
     right: 0;
   }
 
-  #images span {
+  #kyodoimages span {
     height: 48vh;
     bottom: 0;
     width: 38%;
@@ -842,7 +842,7 @@ transition: opacity .3s, visibility 0s .3s;
     height: 57.5vh;
   }
 
-  #images span {
+  #kyodoimages span {
     height: 29.5vh;
     bottom: 0;
     width: 37%;
