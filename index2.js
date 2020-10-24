@@ -18,10 +18,11 @@ let a = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27
     }
     // 格納し終えた配列データを元に出力処理
     console.log(resultdata);
+	var result = resultdata;
     for (let i = 0; i < a.length; i++) {
       document.getElementById("thumbnails").children[i].style.backgroundImage = "url(thumbnail/"+a[i]+".jpg)";
       document.getElementById("thumbnails").children[i].setAttribute("onclick","loadimage("+a[i]+","+(i+1)+")");
-      console.log(resultdata);
+      console.log(result);
       if (!resultdata[aa][4]) {
         var span = document.createElement("span");
         span.id = "kyodo"+parseInt(i+1);
