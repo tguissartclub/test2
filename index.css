@@ -207,11 +207,15 @@ input[type="checkbox"] {
 }
 
 #description::-webkit-scrollbar {
-  width: 1%;
+  width: 1vw;
 }
 
 body::-webkit-scrollbar {
-  visibility: hidden;
+  display: none;
+}
+
+::-webkit-scrollbar-thumb {
+  background: black;
 }
 
 
