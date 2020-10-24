@@ -51,6 +51,7 @@
         if (document.getElementById('kyodo'+cs.slice(5))) {
           document.getElementById('kyodo'+number).classList.remove("show");
           document.getElementById('kyodo'+number).classList.add("hide")
+          document.getElementById('description').classList.remove("kyodoimage")
         }
         }, 300);
         document.querySelector('body').classList.remove("selected");
@@ -70,6 +71,7 @@
         if (document.getElementById('kyodo'+number)){
         document.getElementById('kyodo'+number).classList.remove("hide");
         document.getElementById('kyodo'+number).classList.add("show");
+        document.getElementById('description').classList.add("kyodoimage")
       }
         document.getElementById('images').classList.add(hash.substr(1));
         document.querySelector('body').classList.add("selected");
