@@ -203,12 +203,15 @@ input[type="checkbox"] {
 
 #description {
   position: absolute;
+  overflow-y: auto;
 }
 
-
+#description::-webkit-scrollbar {
+  width: 1%;
+}
 
 body::-webkit-scrollbar {
-  display: none;
+  visibility: hidden;
 }
 
 
