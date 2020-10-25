@@ -207,10 +207,6 @@ input[type="checkbox"] {
   overflow-y: auto;
 }
 
-#description::-webkit-scrollbar {
-  width: 1vw;
-}
-
 body::-webkit-scrollbar {
   display: none;
 }
