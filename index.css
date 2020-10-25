@@ -5,7 +5,6 @@
   border: 0;
 }
 
-
 body {
 	position:relative;
         font-family:
@@ -553,7 +552,8 @@ body::-webkit-scrollbar {
 
 
 h3 {
-  width: 8.5em;
+  padding-left: 0.5em;
+  width: 9em;
   font-size: 1.5em;
 }
 
@@ -727,7 +727,7 @@ transition: opacity .3s, visibility 0s .3s;
     bottom: 0;
     width: 38%;
     right: 0;
-    margin: 2vh  2%;
+    margin: 2vh 1%;
   }
 
 
