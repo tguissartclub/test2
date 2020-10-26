@@ -695,6 +695,25 @@ transition: opacity .3s, visibility 0s .3s;
   visibility: visible;
 }
 
+
+  #kyodo ~ span {
+    left: 0;
+    right: 0;
+    bottom: .1em;
+    margin-left: auto;
+    margin-right: auto;
+    position: fixed;
+    opacity: 0;
+    width: 40em;
+    font-size: 1.1em;
+    transition: opacity .2s;
+  }
+
+  .kyodo #kyodo ~ span {
+    opacity: 1;
+    transition: opacity .3s .3s;
+  }
+
 @media all and (orientation: landscape) {
   #images img,
   .description #images img,
@@ -791,23 +810,6 @@ transition: opacity .3s, visibility 0s .3s;
     animation: backgroundd 0s .4s forwards;
   }
 
-  #kyodo ~ span {
-    left: 0;
-    right: 0;
-    bottom: .1em;
-    margin-left: auto;
-    margin-right: auto;
-    position: fixed;
-    opacity: 0;
-    width: 40em;
-    font-size: 1.1em;
-    transition: opacity .2s;
-  }
-
-  .kyodo #kyodo ~ span {
-    opacity: 1;
-    transition: opacity .3s .3s;
-  }
 
   #intro {
     width: 42.5%;
