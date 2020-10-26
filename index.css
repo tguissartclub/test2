@@ -332,7 +332,7 @@ body::-webkit-scrollbar {
   background-image: url('images/kyodo.jpg');
   background-color: white;
   background-repeat: no-repeat;
-  background-size: contain;
+  background-size: cover;
   background-position: center;
   filter: brightness(.5);
   animation: kyodo 20s infinite alternate ease-in-out;
