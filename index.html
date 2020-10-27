@@ -140,7 +140,1006 @@
 
 
   </script>
-  <link rel="stylesheet" href="index.css">
+  <style>
+  * {
+    padding: 0;
+    margin: 0;
+  	outline: none;
+    border: 0;
+  }
+  
+  body {
+  	position:relative;
+          font-family:
+          'M+ C Type-2 (basic latin) Regular',
+          'M+ Type-2 (general-j) Regular', sans-serif;
+  }
+  
+  .loading, .loaded:not(.three), .three:not(.loaded), #second, #three {
+    visibility: hidden;
+  }
+  
+  .loaded.three,
+  #logo, #loading, #arrow {
+    visibility: visible;
+  }
+  
+  section {
+    width: 100%;
+  }
+  
+  #one {
+    height: 50vh;
+  }
+  
+  #two {
+    height: 100vh;
+  }
+  
+  #three {
+    min-height: 100vh;
+    transition: filter .3s ease-in;
+    padding-top: 75vh;
+    display: flex;
+    justify-content: center;
+  }
+  
+  #thumbnails{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    max-width: 150vmin;
+  }
+  
+  #thumbnails span {
+    width: 30vmin;
+    height: 30vmin;
+    margin: 1.3vmin;
+    border-radius: 1.5vmin;
+    opacity: 1;
+    background-repeat: no-repeat;
+    background-size: 101%;
+    background-position: center;
+  }
+  
+  #thumbnails span:hover {
+      cursor: pointer;
+  }
+  
+  #thumbnails span::after {
+    content: "";
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    border-radius: 1.5vmin;
+    transition: box-shadow .3s, background .3s;
+    background: rgba(255,255,255,0);
+    position: absolute;
+  }
+  
+  #thumbnails span:hover::after {
+    box-shadow: 0 0 2vmin #877a71;
+    transition: box-shadow .3s, background .3s;
+    background: rgba(255,255,255,.3);
+  }
+  
+  #thumbnails span:active::after {
+    box-shadow: 0 0 .65vmin #877a71;
+    transition: box-shadow .2s;
+  }
+  
+  #four {
+    height: 1.2em;
+    font-size: 1.1em;
+    margin-top: 4vh;
+    margin-bottom: 5vh;
+    text-align: center;
+  }
+  
+  .selected #three, .selected #second, .selected #first{
+    filter: blur(10px);
+    transition: filter .3s ease-out;
+  }
+  
+  .selected, .kyodo {
+    overflow: hidden;
+  }
+  
+  #image {
+    position: fixed;
+    height: 100vh;
+    width: 100%;
+    background: rgba(255, 245, 240,.75);
+    top: 0;
+    left: 0;
+    z-index: 100;
+  }
+  
+  #images img{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 80vh;
+    object-fit: contain;
+  }
+  
+  .hide {
+    visibility: hidden !important;
+  }
+  
+  .show {
+    visibility: visible;
+  }
+  
+  .deselected #image {
+    opacity: 0;
+    visibility: hidden;
+    transition: visibility 0s .3s, opacity .3s;
+  }
+  
+  .selected #image {
+    opacity: 1;
+    transition: opacity .3s;
+    visibility: visible;
+  }
+  
+  #close, #close2, #descri, #gototop {
+    width: 9vmax;
+    height: 9vmax;
+    position: fixed;
+  }
+  
+  
+  #close, #close2 {
+    top: 0;
+    right: 0;
+    z-index: 101;
+  }
+  
+  input[type="checkbox"] {
+    display: none;
+  }
+  
+  #descri {
+    right: 9vmax;
+    top: 0;
+    z-index: 101;
+  }
+  
+  #descriptionmenu path {
+    transform: none;
+  }
+  
+  
+  
+  @keyframes description {
+    0% {
+      opacity: 1;
+    }
+    33% {
+      opacity: 0;
+    }
+    66% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  
+  @keyframes description2 {
+    0% {
+      opacity: 1;
+    }
+    33% {
+      opacity: 0;
+    }
+    66% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  
+  #description {
+    position: absolute;
+    overflow-y: auto;
+  }
+  
+  body::-webkit-scrollbar {
+    display: none;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: black;
+  }
+  
+  
+  #first {
+    position: fixed;
+    visibility: visible;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 100;
+  }
+  
+  #logo {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    max-width: 100vw;
+  }
+  
+  .three.first #first svg, .three.first #first {
+    visibility: visible;
+  }
+  
+  .three.second #first svg, .three.third #first svg, .three.second #first, .three.third #first {
+    transition: visibility 0s .3s;
+    visibility: hidden;
+  }
+  
+  .three.first #first svg > g {
+    transition: transform .6s .3s cubic-bezier(.26,1.33,.58,1);
+    transform: translateY(0);
+  }
+  
+  .three.second #first svg > g, .three.third #first svg > g {
+    transition: transform .3s;
+    transform: translateY(100%);
+  }
+  
+  .three.first #first #arrow path {
+    transition: transform .6s .3s cubic-bezier(.26,1.33,.58,1);
+    transform: translateY(0);
+  }
+  
+  .three.second #first #arrow path, .three.third #first #arrow path {
+    transition: transform .3s;
+    transform: translateY(100%);
+  }
+  
+  #loading {
+    position: fixed;
+    opacity: 0;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    stroke-width:2;
+    fill:none;
+    stroke:#000000;
+  }
+  
+  .loading #loading {
+    animation: intro1 1s 7.5s forwards;
+  }
+  
+  .three.loaded #loading {
+    animation: intro2 1s forwards, visibility 0s 1s;
+    visibility: hidden;
+  }
+  
+  #arrow {
+    position: fixed;
+    opacity: 0;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    visibility: hidden;
+  }
+  
+  .three.loaded.first #arrow:hover {
+    cursor: pointer;
+  }
+  
+  .three.loaded #arrow {
+    animation: intro1 1s forwards;
+    visibility: visible;
+  }
+  
+  #second {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    margin: auto;
+  }
+  
+  #intro {
+    top: 0;
+    left: 0;
+    position: fixed;
+  }
+  
+  #intro > p > iro {
+    color: #fe7e15;
+  }
+  
+  #kyodo {
+    position: fixed;
+    background-image: url('images/kyodo.jpg');
+    background-color: white;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    filter: brightness(.5);
+    animation: kyodo 20s infinite alternate ease-in-out;
+  }
+  
+  @keyframes kyodo {
+    from {
+      background-position: bottom left;
+    }
+    to {
+      background-position: bottom right;
+    }
+  }
+  
+  #kyodo:hover {
+    filter: brightness(.9);
+    cursor: pointer;
+  }
+  
+  .three.second #second {
+    visibility: visible;
+  }
+  
+  .three.first #second, .three.third #second {
+    transition: visibility 0s .3s;
+    visibility: hidden;
+  }
+  
+  .three.second #intro p,
+  .three.second #intro h2,
+  .three.second #intro h3 {
+    transition: opacity .3s .3s, transform .5s .3s cubic-bezier(.26,1.33,.58,1);
+    transform: translateY(0);
+    opacity: 1;
+  }
+  
+  .three.first #intro p, .three.third #intro p,
+  .three.first #intro h2, .three.third #intro h2,
+  .three.first #intro h3, .three.third #intro h3 {
+    transition: opacity .3s, transform .3s;
+    transform: translateY(2em);
+    opacity: 0;
+  }
+  
+  .three.second #intro p {
+    transition-delay: .4s;
+  }
+  
+  .three.second #intro h3.kyodo {
+    transition-delay: .5s;
+  }
+  
+  .three.second #intro h3.kojin {
+    transition-delay: .6s;
+  }
+  
+  
+  
+  @keyframes backgroundd {
+    to {
+      background-size: contain;
+      max-height: calc(100vh - 1.5em);
+    }
+  }
+  
+  
+  
+  
+  .tguiss, .furigana {
+    fill: none;
+    stroke: #000000;
+    stroke-width: 0.3;
+    transform: translateY(5%);
+  }
+  
+  .tguiss {
+    transform: translateY(5%);
+  }
+  
+  #logo path:not(.tguiss) {
+    opacity: 0;
+    animation: intro1 1.5s 3.6s cubic-bezier(.26,1.33,.58,1) forwards;
+  }
+  
+  @keyframes intro1 {
+    from {
+      opacity: 0;
+      transform: translateY(20%);
+    }
+  
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes intro2 {
+    to {
+      opacity: 0;
+      transform: translateY(20%);
+    }
+  }
+  
+  #description h2,
+  #description h1,
+  #description p {
+    opacity: 0;
+    transform: translateY(20%);
+    transition: opacity .3s, transform .3s;
+  }
+  
+  .description #description h2,
+  .description #description h1,
+  .description #description p {
+    transition: opacity .3s, transform .3s;
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  .description #description h2 {
+    transition-delay: .4s
+  }
+  
+  .description #description h1 {
+    transition-delay:.5s
+  }
+  
+  .description #description p {
+    transition-delay: .6s
+  }
+  
+  
+  #closemenu, #descriptionmenu, #arrow, #closemenu2, #gototop svg {
+    fill:black;
+    transition: fill .3s;
+  }
+  
+  #close:hover #closemenu, #descri:hover #descriptionmenu, #arrow:hover, #closemenu2:hover, #gototop:hover svg {
+    fill:#fcb619;
+  }
+  
+  .three.first #three span, .three.second #three span {
+    transition: filter .3s, transform .3s ease-in, visibility 0s .3s;
+    transform: translateY(10vh);
+    filter: opacity(0);
+    visibility: hidden;
+  }
+  
+  .three.third #three span {
+    transition: filter .4s .3s, transform .5s .3s cubic-bezier(.41,1.55,.66,.94);
+    transform: translateY(0%);
+    filter: opacity(1);
+    visibility: visible;
+  }
+  
+    .three.third #three #thumbnails.quad span.quadone {
+      transition-delay: .4s;
+    }
+    .three.third #three #thumbnails.quad span.quadtwo {
+      transition-delay: .5s;
+    }
+    .three.third #three #thumbnails.quad span.quadthree {
+      transition-delay: .6s;
+    }
+    .three.third #three #thumbnails.quad span.quadfour {
+      transition-delay: .7s;
+    }
+    .three.third #three #thumbnails.quad span.quadfive {
+      transition-delay: .8s;
+    }
+    .three.third #three #thumbnails.quad span.quadsix {
+      transition-delay: .9s;
+    }
+    .three.third #three #thumbnails.quad span.quadseven {
+      transition-delay: 1s;
+    }
+    .three.third #three #thumbnails.quad span.quadeight {
+      transition-delay: 1.1s;
+    }
+    .three.third #three #thumbnails.quad span.quadnine {
+      transition-delay: 1.2s;
+    }
+  
+  
+    .three.third #three #thumbnails.triple span.tripleone {
+      transition-delay: .4s;
+    }
+    .three.third #three #thumbnails.triple span.tripletwo {
+      transition-delay: .5s;
+    }
+    .three.third #three #thumbnails.triple span.triplethree {
+      transition-delay: .6s;
+    }
+    .three.third #three #thumbnails.triple span.triplefour {
+      transition-delay: .8s;
+    }
+    .three.third #three #thumbnails.triple span.triplefive {
+      transition-delay: .9s;
+    }
+    .three.third #three #thumbnails.triple span.triplesix {
+      transition-delay: 1s;
+    }
+    .three.third #three #thumbnails.triple span.tripleseven {
+      transition-delay: 1.1s;
+    }
+    .three.third #three #thumbnails.triple span.tripleeight {
+      transition-delay: 1.2s;
+    }
+    .three.third #three #thumbnails.triple span.triplenine {
+      transition-delay: 1.3s;
+    }
+    .three.third #three #thumbnails.triple span.tripleten {
+      transition-delay: 1.4s;
+    }
+    .three.third #three #thumbnails.triple span.tripleeleven {
+      transition-delay: 1.5s;
+    }
+  
+  
+  h3 {
+    padding-left: 0.5em;
+    width: 9em;
+    font-size: 1.5em;
+  }
+  
+  h3.kyodo {
+    margin-top: 5vh;
+    margin-bottom: 2vh;
+  }
+  
+  h3:hover {
+    cursor: pointer;
+  }
+  
+  h3.kyodo::after, h3.kojin::after {
+    content: "";
+    position: absolute;
+    backdrop-filter: invert(1);
+    -webkit-backdrop-filter: invert(1);
+  }
+  
+  h3.kojin::after {
+    left: 0;
+    width: 100%;
+    height: 0;
+    transition: height .3s;
+    bottom: 0;
+    top: auto;
+    border-left: 1px black solid;
+  }
+  h3.kojin:hover::after {
+    height: 100%;
+    top: 0;
+    bottom: auto;
+  }
+  
+  #close2 {
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity .3s, visibility 0s .3s;
+  }
+  
+  .kyodo #close2 {
+    visibility: visible;
+    opacity: 1;
+    transition: opacity .3s;
+  }
+  
+  #description h2 {
+    margin: 1rem;
+   font-size: 1.3em;
+  }
+  
+  #description h1 {
+    margin: 1rem;
+    font-size: 1.75em;
+  }
+  
+  #description p {
+    margin: 1rem;
+    font-size: 1.1em;
+  }
+  
+  
+  #caution {
+    top: 43%;
+    bottom: 50%;
+    left: 0;
+    right: 0;
+    position: fixed;
+    text-align: center;
+    animation: caution 3s .2s forwards;
+    color: darkred;
+    visibility: hidden;
+  }
+  
+  @keyframes caution {
+    0%{
+      visibility: visible;
+      opacity: 0;
+    }
+    10%{
+      opacity: 1;
+    }
+    90%{
+      opacity: 1;
+    }
+    100%{
+      opacity: 0;
+      visibility: hidden;
+    }
+  }
+  
+   #caution b, #caution {
+    font-size: 1.2em;
+  }
+  
+  #gototop {
+    background: white;
+    border-radius: 50%;
+    visibility: hidden;
+    bottom: 3vh;
+    right: 3vh;
+    cursor: pointer;
+    box-shadow: 0 0 1vmax #877a71;
+  }
+  
+  .three.second #gototop, .three.third #gototop {
+    visibility: visible;
+    transform: scale(1);
+    transition: transform .3s;
+    transition-delay: .2s;
+  }
+  
+  .three.first #gototop, .three.kyodo #gototop {
+    visibility: hidden;
+    transition: visibility 0s .3s, transform .3s;
+    transform: scale(0);
+  }
+  
+  #gototop svg {
+    top: 1.318019484660536vmax;
+    left: 1.318019484660536vmax;
+    width: 6.363961030678928vmax;
+    height: 6.363961030678928vmax;
+    position: relative;
+  }
+  #kyodoimages span {
+  visibility: hidden;
+  position: fixed;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0;
+  transition: opacity .3s, visibility 0s .3s;
+  }
+  
+  .description #kyodoimages span {
+    opacity: 1;
+    transition: opacity .3s .7s;
+    visibility: visible;
+  }
+  
+  
+    #kyodo ~ span {
+      left: 0;
+      bottom: 0;
+      display: inline;
+      text-align: center;
+      position: fixed;
+      opacity: 0;
+      font-size: 1.1em;
+      height: auto;
+      width: 100%;
+      visibility: hidden;
+      transition: opacity .1s, visibility 0s .1s;
+    }
+  
+    .kyodo #kyodo ~ span {
+      background: white;
+      opacity: 1;
+      visibility: visible;
+      transition: opacity .3s .3s, visibility 0s .3s;
+    }
+  
+  @media all and (orientation: landscape) {
+    #images img,
+    .description #images img,
+    #description,
+    .description #description{
+      transition: width .3s;
+    }
+  
+    #images img, #description{
+      top: 10vh;
+      transition-delay: .3s;
+    }
+  
+    .description #images img{
+      width: 60%;
+    }
+  
+    #description{
+      height: 100vh;
+      width: 0%;
+      right: 0;
+    }
+  
+    #description.kyodoimage {
+      height: 40vh;
+    }
+  
+    #kyodoimages span {
+      height: 48vh;
+      bottom: 0;
+      width: 38%;
+      right: 0;
+      margin: 2vh 1%;
+    }
+  
+  
+    .description #description{
+      width: 40%;
+    }
+  
+    html {
+      font-size: 16px;
+    }
+    .landscapemenu {
+      visibility: visible;
+    }
+  
+    .portraitmenu {
+      visibility: hidden;
+    }
+  
+    #descriptionmenu path:not(#path1).landscapemenu{
+      transition: transform .3s;
+    }
+  
+    #descriptionmenu #path1 {
+      transition: transform 0s .15s;
+      animation: description2 .3s;
+    }
+  
+    .description #descriptionmenu #path1 {
+      transform:  translateX(100%) translateY(100%) rotate(180deg);
+      animation: description .3s;
+      transition: transform 0s .15s;
+    }
+  
+    .description #descriptionmenu #path2, .description #descriptionmenu #path4 {
+      transform: translateX(23%);
+    }
+  
+    .description #descriptionmenu #path3 {
+      transform: translateX(35%);
+    }
+  
+  
+    .three.second #kyodo {
+      transition: opacity .8s .7s, filter .5s, width .4s .1s, background-size 0s .4s, background-position 0s .4s;
+      opacity: 1;
+    }
+  
+    .three.first #kyodo, .three.third #kyodo {
+      transition: opacity .3s, width .3s;
+      opacity: 0;
+      width: 0;
+    }
+  
+    .kyodo #kyodo {
+      transition: width .3s .1s !important;
+      width: 100%;
+  
+      cursor: default;
+      filter: brightness(1);
+      animation: backgroundd 0s .4s forwards;
+    }
+  
+  
+    #intro {
+      width: 42.5%;
+      top: 20vh;
+      height: 60%;
+      left: 5vw;
+    }
+    #kyodo {
+      width: 47.5vw;
+      height: 100%;
+      right: 0;
+    }
+    #logo {
+      height: 40vh;
+    }
+    #loading {
+      height: 3.5vh;
+      top: 50vh;
+    }
+    #arrow {
+      height: 12.5vh;
+      top: 70vh;
+      width: 12.5vh;
+    }
+    h3.kyodo::after {
+      width: 0;
+      height: 100%;
+      transition: width .3s;
+      right: 0;
+      left: auto;
+      border-bottom: 1px black solid;
+    }
+  
+    h3.kyodo:hover::after {
+      width: 100%;
+      left: 0;
+      right: auto;
+    }
+  }
+  
+  
+  @media all and (orientation: portrait) {
+    #images img,
+    .description #images img,
+    #description,
+    .description #description{
+      transition: height .3s;
+    }
+  
+    #images img {
+      top: 10vh;
+    }
+  
+    #images img, #description{
+      transition-delay: .3s;
+    }
+  
+    .description #images img{
+      height: 57.5vh;
+    }
+  
+    #kyodoimages span {
+      height: 29.5vh;
+      bottom: 0;
+      width: 37%;
+      right: 0;
+      margin: 1.5vh  1.5%;
+    }
+  
+    #description {
+      width: 100%;
+      height: 0%;
+      bottom: 0;
+      left: 0;
+    }
+  
+    #description.kyodoimage {
+      width: 60%;
+    }
+  
+    .description #description{
+      height: 32.5vh;
+    }
+  
+    html {
+      font-size: 1.5vh;
+    }
+    .landscapemenu {
+      visibility: hidden;
+    }
+  
+    .portraitmenu {
+      visibility: visible;
+    }
+  
+    #descriptionmenu #path12 {
+      transition: transform 0s .15s;
+      animation: description2 .3s;
+    }
+  
+    .description #descriptionmenu #path12 {
+      transform:  translateX(100%) translateY(100%) rotate(180deg);
+      animation: description .3s;
+      transition: transform 0s .15s;
+    }
+  
+    #descriptionmenu path:not(#path12).portraitmenu {
+      transition: transform .3s;
+    }
+  
+    .description #descriptionmenu #path14, #descriptionmenu #path18, .description #descriptionmenu #path13, #descriptionmenu #path17 {
+      transform: none;
+    }
+  
+    .description #descriptionmenu #path18, #descriptionmenu #path14 {
+      transform: translateX(-16.1%);
+    }
+  
+    .description #descriptionmenu #path17, #descriptionmenu #path13 {
+      transform: translateX(16.1%);
+    }
+  
+    .three.second #kyodo {
+      transition: opacity .8s .7s, filter .5s, height .4s .1s;
+      opacity: 1;
+    }
+  
+    .three.first #kyodo, .three.third #kyodo {
+      transition: opacity .3s, height .3s;
+      opacity: 0;
+      height: 0;
+    }
+  
+    .kyodo #kyodo {
+      transition: height .3s .1s !important;
+      height: 100vh;
+      cursor: default;
+  
+      filter: brightness(1);
+      background-size: contain;
+      background-position: center !important;
+    }
+  
+    #kyodo {
+      width: 100%;
+      height: 50vh;
+      bottom: 0;
+    }
+    #intro {
+      width: 85%;
+      height: 35vh;
+      left: 7.5vw;
+      top: 10vh;
+    }
+    #logo {
+      width: 90vw;
+    }
+    #loading {
+      width: 15vw;
+      top: 45vh;
+    }
+    #arrow {
+      width: 15vw;
+      top: 65vh;
+      height: 15vw;
+      max-height: 20vh;
+    }
+    h3.kyodo::after {
+      left: 0;
+      width: 100%;
+      height: 0;
+      transition: height .3s;
+      bottom: 0;
+      top: auto;
+      border-left: 1px black solid;
+    }
+    h3.kyodo:hover::after {
+      height: 100%;
+      top: 0;
+      bottom: auto;
+    }
+  }
+
+  </style>
 </head>
 
 <body onscroll="scroll()" class="deselected" onload="loaded()">
@@ -417,7 +1416,7 @@
   </div>
   <div id="kyodo" onclick="location.href = '#kyodo';">
   </div>
-  <span>現美術部員、OB・OG、教員みんなで金木犀の木にアートの花を咲かせました！</span>
+  <span><span>現美術部員、OB・OG、教員みんなで金木犀の木にアートの花を咲かせました！</span></span>
   <a href="#home" id="close2">
     <svg viewBox="0 0 24 24" id="closemenu2">
       <path
